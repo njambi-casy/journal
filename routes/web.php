@@ -18,6 +18,8 @@
 Route::get('/', 'PageController@index');
 Route::get('/album', 'PageController@album');
 Route::get('/help', 'PageController@help');
-Route::get('/Reminders', 'PageController@reminders');
+Route::get('/reminders', 'PageController@reminders');
 
+//CRUD
+Route::resource('posts', 'EntriesController');
 
