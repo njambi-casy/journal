@@ -1,7 +1,8 @@
 @extends('Layouts.App')
 
 @section('content')
-<h1>Hey what are you thinking about?</h1>
+<div class="jumbotron">
+<h1>Hey,what are you thinking about?</h1>
 
 
 {!! Form::open(['action' =>'EntriesController@store'  ,'method'=>'POST']) !!}
@@ -13,10 +14,10 @@
 	{{Form::textarea('body','' ,['class'=>'form-control', 'placeholder'=>'Your thoughts'])}}
 	
 </div>
-{{Form::submit('Submit', ['class'=>'btn btn-outline-primary'])}}
+{{Form::submit('Save', ['class'=>'btn btn-outline-primary'])}}
 
 
 
 {!! Form::close() !!}
-
+</div>
 @endsection

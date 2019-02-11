@@ -20,6 +20,15 @@
 <a href="/posts" class="btn btn-outline-primary btn-md">Back</a>
 
 </div>
+<hr>
+<a href="/posts/{{$entry->id}}/edit" class="btn btn-outline-info">Edit</a>
+{!!Form::open(['action'=>['EntriesController@destroy' ,$entry->id], 'method'=>'POST', 'class'=>'pull-right'])!!}
+
+	{{Form::hidden('_method' ,'DELETE')}}
+	{{Form::submit('Delete' ,['class'=>'btn btn-outline-danger btn-right'])}}
+
+{!!Form::close()!!}
+
 
 
 @endforeach

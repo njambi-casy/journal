@@ -73,7 +73,8 @@ class EntriesController extends Controller
      */
     public function edit($id)
     {
-        //
+         $entries= Entries::where('id',$id)->get();
+        return view('entries.edit')->with('entries', $entries);  
     }
 
     /**
@@ -85,7 +86,16 @@ class EntriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request,[
+            'title'=>'required',
+            'body' =>'required'
+      ]);
+      $post = Entries::find($id);
+      $post->title= $request->input('title');
+      $post->body= $request->input('body');
+      $post->save();
+
+      return redirect('/posts')->with('success' ,'post edited');
     }
 
     /**
@@ -96,6 +106,10 @@ class EntriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $post = Entries::find($id);
+         $post->delete();
+        return redirect('/posts')->with('success' ,'Entry Deleted');
+
+
     }
 }

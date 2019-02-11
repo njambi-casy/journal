@@ -26,7 +26,5 @@
 	@endif
 
 </div>
-<hr>
-<a href="/posts/create" class="btn btn-outline-primary btn-lg">Add an entry</a>
 
 @endsection
