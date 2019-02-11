@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Entries;
+use DB;
 
 class EntriesController extends Controller
 {
@@ -14,7 +15,8 @@ class EntriesController extends Controller
      */
     public function index()
     {
-        $entries=Entries::all();
+        //$entries=Entries::all();
+        $entries= Entries::OrderBy('id', 'asc')->paginate(10);
         
       return view('entries.index')->with('entries',$entries);
       }
@@ -26,7 +28,7 @@ class EntriesController extends Controller
      */
     public function create()
     {
-        //
+       return view('entries.create');
     }
 
     /**
@@ -37,7 +39,18 @@ class EntriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request,[
+            'title'=>'required',
+            'body' =>'required'
+      ]);
+      $post =new Entries;
+      $post->title= $request->input('title');
+      $post->body= $request->input('body');
+      $post->save();
+
+      return redirect('/posts')->with('success' ,'post created');
+
+     // return('nyee');
     }
 
     /**

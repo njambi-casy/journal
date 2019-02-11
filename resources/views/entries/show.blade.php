@@ -15,6 +15,11 @@
 		{{$entry->created_at}}
 	</small>
 </ul>
+<hr>
+<div class="well">
+<a href="/posts" class="btn btn-outline-primary btn-md">Back</a>
+
+</div>
 
 
 @endforeach

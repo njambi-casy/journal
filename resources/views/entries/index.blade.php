@@ -4,7 +4,7 @@
 <div class="container">
 	<h2>Entries</h2>
 
-	@if(count($entries)>1)
+	@if(count($entries)>0)
 	@foreach($entries as $entry)
 	<div class="well">
 		<ol class="list-group">
@@ -16,6 +16,7 @@
 	</div>
 	</ol>
 	@endforeach
+	{{$entries->links()}}
 
 	@else
 	<div class="container">
@@ -25,5 +26,7 @@
 	@endif
 
 </div>
+<hr>
+<a href="/posts/create" class="btn btn-outline-primary btn-lg">Add an entry</a>
 
 @endsection
