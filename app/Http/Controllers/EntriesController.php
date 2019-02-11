@@ -48,7 +48,8 @@ class EntriesController extends Controller
      */
     public function show($id)
     {
-        return Entries::all();
+        $entries= Entries::where('id',$id)->get();
+        return view('entries.show')->with('entries', $entries);    
     }
 
     /**

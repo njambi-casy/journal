@@ -22,4 +22,7 @@ Route::get('/reminders', 'PageController@reminders');
 
 //CRUD
 Route::resource('posts', 'EntriesController');
+//Route::post('/posts{{$id}}','EntriesController@show');
+
+
 

@@ -8,7 +8,7 @@
 	@foreach($entries as $entry)
 	<div class="well">
 		<ol class="list-group">
-		<li class="list-group-item"><a href="/entries/{{$entry->id}}">
+		<li class="list-group-item"><a href="/posts/{{$entry->id}}">
 			<h2>{{$entry->title}}</h2></a>
 		<small>Written on.{{$entry->created_at}}</small>
 	
