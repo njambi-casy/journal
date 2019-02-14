@@ -26,3 +26,7 @@ Route::resource('posts', 'EntriesController');
 
 
 
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index');

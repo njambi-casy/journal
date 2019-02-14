@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Entries;
+use App\User;
 use DB;
-
 class EntriesController extends Controller
 {
     /**
@@ -13,6 +13,16 @@ class EntriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     /**
+     * This function ensures that You have to be logged in to view any of the pages
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
     public function index()
     {
         //$entries=Entries::all();
@@ -46,6 +56,7 @@ class EntriesController extends Controller
       $post =new Entries;
       $post->title= $request->input('title');
       $post->body= $request->input('body');
+      $post->user_id = auth()->user()->id;
       $post->save();
 
       return redirect('/posts')->with('success' ,'post created');
@@ -74,6 +85,13 @@ class EntriesController extends Controller
     public function edit($id)
     {
          $entries= Entries::where('id',$id)->get();
+         //$user=Entries::find('user_id');
+
+
+        /* if(auth()->user()->id !==$user){
+
+           *return redirect('/posts')->with('error', 'Mind ya business'); 
+        * }*/
         return view('entries.edit')->with('entries', $entries);  
     }
 
